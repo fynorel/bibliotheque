@@ -1,0 +1,8 @@
+// Surcharge des variables Bootstrap AVANT l'import
+$primary: #6f42c1;       // exemple : violet au lieu du bleu par défaut
+$body-bg: #1a1a2e;       // exemple : fond sombre
+$body-color: #e0e0e0;
+$warning: #ffc107;     // exemple : texte clair
+
+// Import des sources Bootstrap
+@import '../../vendor/twbs/bootstrap/scss/bootstrap';// add your SASS styles in this file

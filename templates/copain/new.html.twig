@@ -3,9 +3,9 @@
 {% block title %}New Copain{% endblock %}
 
 {% block body %}
-    <h1>Create new Copain</h1>
+    <h1 class="m-4 p-3">Nouveau Copain</h1>
 
     {{ include('copain/_form.html.twig') }}
 
-    <a href="{{ path('app_copain_index') }}">back to list</a>
+    <a href="{{ path('app_copain_index') }}" class="m-4 p-3 btn btn-warning">Retour à la liste</a>
 {% endblock %}

@@ -15,10 +15,23 @@ use Symfony\Component\Routing\Attribute\Route;
 final class LivreController extends AbstractController
 {
     #[Route(name: 'app_livre_index', methods: ['GET'])]
-    public function index(LivreRepository $livreRepository): Response
+    public function index(Request $request, LivreRepository $livreRepository): Response
     {
+        $recherche = $request->query->get('q');
+
+        if ($recherche) {
+            $livres = $livreRepository->createQueryBuilder('l')
+                ->where('l.titre LIKE :recherche')
+                ->orWhere('l.auteur LIKE :recherche')
+                ->setParameter('recherche', '%' . $recherche . '%')
+                ->getQuery()
+                ->getResult();
+        } else {
+            $livres = $livreRepository->findAll();
+        }
+
         return $this->render('livre/index.html.twig', [
-            'livres' => $livreRepository->findAll(),
+            'livres' => $livres,
         ]);
     }
 

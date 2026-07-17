@@ -6,9 +6,9 @@
     <h1>Livre index</h1>
 
     <table class="table">
-        <thead>
+        <thead class="table-warning">
             <tr>
-                <th>Id</th>
+                <!--<th>Id</th>-->
                 <th>Titre</th>
                 <th>Genre</th>
                 <th>Auteur</th>
@@ -21,7 +21,7 @@
         <tbody>
         {% for livre in livres %}
             <tr>
-                <td>{{ livre.id }}</td>
+                <!--<td>{{ livre.id }}</td>-->
                 <td>{{ livre.titre }}</td>
                 <td>{{ livre.genre }}</td>
                 <td>{{ livre.auteur }}</td>
@@ -29,17 +29,17 @@
                 <td>{{ livre.anneeEdition }}</td>
                 <td>{{ livre.estPrete ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_livre_show', {'id': livre.id}) }}">show</a>
-                    <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>
+                    <a href="{{ path('app_livre_show', {'id': livre.id}) }}" class="text-info">voir</a>
+                    <a href="{{ path('app_livre_edit', {'id': livre.id}) }}" class="text-danger">éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="7" class="text-warning">Pas d'enregistrement trouvés</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_livre_new') }}">Create new</a>
+    <a href="{{ path('app_livre_new') }} " class="btn btn-warning">Nouveau Livre</a>
 {% endblock %}

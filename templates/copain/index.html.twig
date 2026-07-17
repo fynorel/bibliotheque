@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Copain index{% endblock %}
+{% block title %}Copain{% endblock %}
 
 {% block body %}
-    <h1>Copain index</h1>
+    <h1>Liste des Copains</h1>
 
     <table class="table">
-        <thead>
+        <thead class="table-warning">
             <tr>
                 <th>Id</th>
                 <th>Prenom</th>
@@ -27,11 +27,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4" class="text-warning">pas de copains enregistrés</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_copain_new') }}">Create new</a>
+    <a href="{{ path('app_copain_new') }} " class="m-4 p-3 btn btn-warning">Créer un nouveau copain</a>
 {% endblock %}
