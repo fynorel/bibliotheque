@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\AdministrateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: AdministrateurRepository::class)]
-class Administrateur
+class Administrateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -51,15 +53,39 @@ class Administrateur
         return $this;
     }
 
-    public function getRoles(): array
+    /*public function getRoles(): array
     {
         return $this->roles;
-    }
+    }*/
 
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
 
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->login;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->mot_de_passe;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // si vous stockez des données sensibles temporaires sur l'utilisateur, effacez-les ici
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // garantit que chaque utilisateur a au moins ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 }
