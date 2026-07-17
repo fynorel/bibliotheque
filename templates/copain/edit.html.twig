@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Copain{% endblock %}
+
+{% block body %}
+    <h1>Edit Copain</h1>
+
+    {{ include('copain/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_copain_index') }}">back to list</a>
+
+    {{ include('copain/_delete_form.html.twig') }}
+{% endblock %}

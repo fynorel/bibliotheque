@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Copain index{% endblock %}
+
+{% block body %}
+    <h1>Copain index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for copain in copains %}
+            <tr>
+                <td>{{ copain.id }}</td>
+                <td>{{ copain.prenom }}</td>
+                <td>{{ copain.nom }}</td>
+                <td>
+                    <a href="{{ path('app_copain_show', {'id': copain.id}) }}">show</a>
+                    <a href="{{ path('app_copain_edit', {'id': copain.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_copain_new') }}">Create new</a>
+{% endblock %}

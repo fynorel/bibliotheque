@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aministrateur{% endblock %}
+
+{% block body %}
+    <h1>Aministrateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ aministrateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ aministrateur.login }}</td>
+            </tr>
+            <tr>
+                <th>Mot_de_passe</th>
+                <td>{{ aministrateur.motDePasse }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ aministrateur.roles ? aministrateur.roles|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_aministrateur_index') }}">back to list</a>
+
+    <a href="{{ path('app_aministrateur_edit', {'id': aministrateur.id}) }}">edit</a>
+
+    {{ include('aministrateur/_delete_form.html.twig') }}
+{% endblock %}

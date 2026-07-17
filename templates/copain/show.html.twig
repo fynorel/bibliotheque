@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Copain{% endblock %}
+
+{% block body %}
+    <h1>Copain</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ copain.id }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ copain.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ copain.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_copain_index') }}">back to list</a>
+
+    <a href="{{ path('app_copain_edit', {'id': copain.id}) }}">edit</a>
+
+    {{ include('copain/_delete_form.html.twig') }}
+{% endblock %}

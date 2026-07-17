@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Copain{% endblock %}
+
+{% block body %}
+    <h1>Create new Copain</h1>
+
+    {{ include('copain/_form.html.twig') }}
+
+    <a href="{{ path('app_copain_index') }}">back to list</a>
+{% endblock %}
